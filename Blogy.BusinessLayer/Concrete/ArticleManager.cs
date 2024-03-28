@@ -26,6 +26,7 @@ namespace Blogy.BusinessLayer.Concrete
 
         public Article TGetById(int id)
         {
+            //eğer id degerine göre yetkisi varsa
             return _articleDal.GetById(id);
         }
 

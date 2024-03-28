@@ -1,0 +1,23 @@
+﻿@model UserSignInViewModel
+
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <form method="post">
+        <br /><br />
+       
+        <label>Kullanıcı Adınız</label>
+        <input type="text" class="form-control" asp-for="UserName" />
+        <br /> 
+        <label>Şifre</label>
+        <input type="text" class="form-control" asp-for="Password" />
+        <br />
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <br />
+        <button class="btn btn-info">Giriş Yap</button>
+    </form>
+</div>
+

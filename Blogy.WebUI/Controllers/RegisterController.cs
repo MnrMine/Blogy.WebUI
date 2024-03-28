@@ -22,34 +22,45 @@ namespace Blogy.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(CreateRegisterViewModel p)
         {
-            AppUser appUser = new AppUser()
+            if(p.Password != null)
             {
-                Name = p.Name,
-                Surname = p.Surname,
-                Email = p.Email,
-                UserName = p.Username,
-                Description = "aa",
-                ImageUrl="bb",
-             };
-            var result = await _userManager.CreateAsync(appUser, p.Password);
-            {
-
-                if (result.Succeeded)
+                AppUser appUser = new AppUser()
                 {
+                    Name = p.Name,
+                    Surname = p.Surname,
+                    Email = p.Email,
+                    UserName = p.Username,
+                    Description = "aa",
+                    ImageUrl = "bb",
+                };
+                var result = await _userManager.CreateAsync(appUser, p.Password);
+                
 
-                    return RedirectToAction("Index", "Login");
-                }
-                else
-                {
-                    foreach(var item in result.Errors)
+                    if (result.Succeeded)
                     {
-                        ModelState.AddModelError("", item.Description);
+
+                        return RedirectToAction("Index", "Login");
                     }
+                    else
+                    {
+                        foreach (var item in result.Errors)
+                        {
+                            ModelState.AddModelError("", item.Description);
+                        }
+                    }
+                    return View();
+
                 }
+            else
+            {
+                ModelState.AddModelError("", "Şifre Alanı boş geçilemez.");
                 return View();
+            }
+            
+                
             }
 
         }
             
     }
-}
+
