@@ -148,6 +148,9 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleId"), 1L, 1);
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -170,6 +173,8 @@ namespace Blogy.DataAccessLayer.Migrations
 
                     b.HasKey("ArticleId");
 
+                    b.HasIndex("AppUserId");
+
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("WriterId");
@@ -186,6 +191,7 @@ namespace Blogy.DataAccessLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CategoryId");
@@ -211,11 +217,78 @@ namespace Blogy.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameSurname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.HasKey("CommentId");
 
                     b.HasIndex("ArticleId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Blogy.EntityLayer.Concrete.Message", b =>
+                {
+                    b.Property<int>("MessageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageID"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReceiverMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverNameSurname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderNameSurname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageID");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("Blogy.EntityLayer.Concrete.Notification", b =>
+                {
+                    b.Property<int>("NotificationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NotificationID"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NotificationID");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Tag", b =>
@@ -247,6 +320,13 @@ namespace Blogy.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirm")
+                        .HasColumnType("bit");
+
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -254,6 +334,13 @@ namespace Blogy.DataAccessLayer.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("WriterId");
 
@@ -365,6 +452,12 @@ namespace Blogy.DataAccessLayer.Migrations
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Article", b =>
                 {
+                    b.HasOne("Blogy.EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Articles")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Blogy.EntityLayer.Concrete.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
@@ -376,6 +469,8 @@ namespace Blogy.DataAccessLayer.Migrations
                         .HasForeignKey("WriterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Category");
 
@@ -442,6 +537,11 @@ namespace Blogy.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Blogy.EntityLayer.Concrete.AppUser", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("Blogy.EntityLayer.Concrete.Article", b =>

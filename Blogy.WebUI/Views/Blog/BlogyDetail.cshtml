@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+@await Component.InvokeAsync("_BlogyListHeadComponentPartial")
+<body>
+
+    @await Component.InvokeAsync("_BlogyNavbarComponentPartial")
+
+    @await Component.InvokeAsync("_BlogyDetailByCoverInfoComponentPartial", new { id = ViewBag.i })
+
+    <section class="section">
+        <div class="container">
+
+            <div class="row blog-entries element-animate">
+
+                <div class="col-md-12 col-lg-8 main-content">
+
+                    @await Component.InvokeAsync("_BlogDetailByBlogContentComponentPartial", new { id = ViewBag.i })
+
+                    @await Component.InvokeAsync("_BlogDetailCommentComponentPartial", new { id = ViewBag.i })
+
+                </div>
+
+                <div class="col-md-12 col-lg-4 sidebar">
+                    <div class="sidebar-box search-form-wrap">
+                        <form action="#" class="sidebar-search-form">
+                            <span class="bi-search"></span>
+                            <input type="text" class="form-control" id="s" placeholder="Aranacak kelimeyi giriniz...">
+                        </form>
+                    </div>
+
+                    @await Component.InvokeAsync("_BlogDetailByWriterInfoComponentPartial", new { id = ViewBag.i })
+
+                    @await Component.InvokeAsync("_BlogDetailGetOtherBlogPostByWriterComponentPartial", new { id = ViewBag.i })
+
+                    @await Component.InvokeAsync("_BlogDetailCategoryListComponentPartial")
+
+                    @await Component.InvokeAsync("_BlogDetailTagsComponentPartial")
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    @await Component.InvokeAsync("_BlogDetailOtherPostsComponentPartial")
+
+    @await Component.InvokeAsync("_FooterComponentPartial")
+
+    @await Component.InvokeAsync("_ScriptPartialComponentPartial")
+
+</body>
+</html>

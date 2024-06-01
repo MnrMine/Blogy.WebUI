@@ -9,5 +9,14 @@ namespace Blogy.BusinessLayer.Abstract
 {
     public interface IArticleService: IGenericService<Article>
     {
+		public List<Article> TGetArticleWithWriter();
+        Writer TGetWriterInfoByArticleWriter(int id);
+        List<Article> TGetArticlesByWriter(int id);
+        List<Article> TGetOtherBlogPostByWriter(int id);
+        List<Article> TGetLast4BlogPost();
+        Article TGetArticleByIdWithWriterIdAndCategory(int id);
+        public List<Article> TGetArticleFilterList(string search);
+
+
     }
 }

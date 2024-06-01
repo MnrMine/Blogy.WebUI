@@ -1,0 +1,54 @@
+﻿@model  Blogy.EntityLayer.Concrete.Article
+
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Blog Güncelleme  Sayfası</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Blog İşlemleri</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog Düzenleme </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Blog Düzenleme Paneli</h4>
+                    <p class="card-description">
+                        Aşağıdaki tablodan size ait bloglar üzerinde işlem yapabilirsiniz
+                    </p>
+                    <div class="table-responsive">
+                        <form method="post">
+
+                            <input type="hidden" asp-for="ArticleId" class="form-control" />
+                            <input type="hidden" asp-for="AppUserId" class="form-control" />
+                            <input type="hidden" asp-for="WriterId" class="form-control" />
+                            <label>Blog Başlığı</label>
+                            <input type="text" asp-for="Title" class="form-control" />
+                            <br />
+                            <label>Blog Kategori</label>
+                            @Html.DropDownListFor(x => x.CategoryId,(List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                            <br />
+                            <label>Blog Kapak Fotoğraf Yolu</label>
+                            <input type="text" asp-for="CoverImageUrl" class="form-control" />
+                            <br />
+                            <label>Blog Detayları</label>
+                            <textarea rows="25" class="form-control" id="myeditor" asp-for="Description"></textarea>
+                            <br />
+                            <button class="btn btn-info">Blogu Güncelle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

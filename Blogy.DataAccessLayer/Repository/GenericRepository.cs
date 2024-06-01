@@ -3,6 +3,7 @@ using Blogy.DataAccessLayer.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,8 @@ namespace Blogy.DataAccessLayer.Repository
             _context.Set<T>().Remove(values);
             _context.SaveChanges();
         }
+
+       
 
         public T GetById(int id)
         {

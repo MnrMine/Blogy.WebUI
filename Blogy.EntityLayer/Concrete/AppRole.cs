@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blogy.EntityLayer.Concrete
 {
-    public class AppRole:IdentityRole<int>
+    public class AppRole: IdentityRole<int>
     {
         public string Description { get; set; }
     }

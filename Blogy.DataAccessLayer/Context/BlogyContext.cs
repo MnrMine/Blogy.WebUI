@@ -14,16 +14,18 @@ namespace Blogy.DataAccessLayer.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-HHOE249\\SQLEXPRESS;initial catalog=DbBlogy;integrated Security=true;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-HHOE249\\SQLEXPRESS;initial catalog=DB_NewBlogy;integrated Security=true;");
         }
         public DbSet<Category> Categories { get; set; }
             public DbSet<Article> Articles { get; set; }
             public DbSet<Comment> Comments { get; set; }
             public DbSet<Tag> Tags { get; set; }
             public DbSet<Writer> Writers { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
 
 
-   
+
     }
 }

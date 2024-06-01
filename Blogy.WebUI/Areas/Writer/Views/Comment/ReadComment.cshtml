@@ -1,0 +1,54 @@
+﻿@model Blogy.EntityLayer.Concrete.Comment
+@{
+    ViewData["Title"] = "ReadComment";
+    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Yorum Detay Sayfası</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Blog İşlemleri</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Yorum Detay </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yorum Detay Paneli</h4>
+                    <p class="card-description">
+                        Aşağıdaki tablodan size ait yorumları görüntüleyebilirsiniz
+                    </p>
+                    <div class="table-responsive">
+                        <form method="post">
+
+                            <input type="hidden" asp-for="CommentId" class="form-control" />
+
+                            <label>Ad Soyad</label>
+                            <input type="text" asp-for="NameSurname" class="form-control" />
+                            <br />
+
+                            <label>Mail Adresi</label>
+                            <input type="text" asp-for="Email" class="form-control" />
+                            <br />
+
+                            <label>Tarih</label>
+                            <input type="text" asp-for="CommentDate" class="form-control" />
+                            <br />
+
+                            <label>Yorum İçeriği</label>
+                            <textarea rows="5" class="form-control" asp-for="Content"></textarea>
+                            <br />
+                            <a href="/Writer/Comment/CommentList" class="btn btn-outline-primary">Yorum Listesine Dön</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

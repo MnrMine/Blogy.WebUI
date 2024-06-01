@@ -1,0 +1,65 @@
+﻿
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
+        <a class="sidebar-brand brand-logo" href="../../index.html"><img src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/images/logo.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="../../index.html"><img src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/images/logo-mini.svg" alt="logo" /></a>
+    </div>
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                    <img src="@ViewBag.resim" alt="profile" />
+                    <span class="login-status online"></span>
+                    <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column pr-3">
+                    <span class="font-weight-medium mb-2">@ViewBag.adsoyad</span>
+                    <span class="font-weight-normal">Blog Sayısı</span>
+                </div>
+                <span class="badge badge-danger text-white ml-3 rounded">@ViewBag.blogsayi</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Dashboard/Index">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Blog/MyBlogList">
+                <i class="mdi mdi-database menu-icon"></i>
+                <span class="menu-title">Bloglarım</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Comment/CommentList">
+                <i class="mdi mdi-comment menu-icon"></i>
+                <span class="menu-title">Yorumlar</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Message/MessageList">
+                <i class="mdi mdi-message-text menu-icon"></i>
+                <span class="menu-title">Mesajlarım</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Statistic/Index">
+                <i class="mdi mdi-chart-areaspline menu-icon"></i>
+                <span class="menu-title">İstatistikler</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Chart/Index" ">
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+                <span class="menu-title">Grafikler</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+                <i class="mdi mdi-logout menu-icon"></i>
+                <span class="menu-title">Çıkış Yap</span>
+            </a>
+        </li>
+    </ul>
+</nav>

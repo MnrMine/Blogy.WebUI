@@ -13,5 +13,8 @@ namespace Blogy.EntityLayer.Concrete
         public DateTime CommentDate { get; set; }
         public int ArticleId { get; set; }
         public Article Articles { get; set; }
+        public string NameSurname { get; set; }
+        public string Email { get; set; }
+        public bool Status { get; set; }
     }
 }
