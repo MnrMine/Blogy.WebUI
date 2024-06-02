@@ -1,0 +1,184 @@
+﻿@model List<Blogy.EntityLayer.Concrete.Writer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+@{
+    string color = "";
+}
+@{
+    string status = "";
+}
+@{
+    string headingColor = "";
+}
+
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Yazar İşlemleri</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Yazar Adı
+                            </th>
+                            <th style="width: 15%">
+                                Yazar Görsel
+                            </th>
+                            <th style="width: 10%">
+                                Durum
+                            </th>
+
+                            <th style="width: 10%">
+                                Yazılar
+                            </th>
+                            <th style="width: 10%">
+                                Sil
+                            </th>
+                            <th style="width: 10%">
+                                Düzenle
+                            </th>
+                            <th style="width: 10%">
+                                Aktif/Pasif
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+
+
+                            if (item.Status == true)
+                            {
+                                status = "Aktif";
+                                headingColor = "text-success";
+
+
+
+                            }
+                            else if (item.Status == false)
+                            {
+                                status = "Pasif";
+                                headingColor = ".text-secondary";
+
+
+                            }
+                            <tr>
+                                <td>
+                                    @count
+                                </td>
+                                <td>
+                                    <a>
+                                        @item.Name
+                                    </a>
+
+
+                                </td>
+
+                                <td>
+
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@item.ImageUrl">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <span class="@headingColor">@status</span>
+
+                                </td>
+
+                                <td>
+
+                                    <a class="btn btn-primary btn-sm" href="/Writer/WriterByBlog/@item.WriterId">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Yazılarını Gör
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm" href="/Writer/DeleteWriter/@item.WriterId">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Sil
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-success btn-sm" href="/Admin/UpdateWriter/@item.WriterId">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                </td>
+                                @if (item.Status == true)
+                                {
+                                    <td>
+
+                                        <a class="btn btn-info btn-sm" href="/Admin/Writer/ChangeToFalse/@item.WriterId">
+                                            <i class="fas fa-check">
+                                            </i>
+                                            Pasif Yap
+                                        </a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+
+                                        <a class="btn btn-warning btn-sm" href="/Admin/Writer/ChangeToTrue/@item.WriterId">
+                                            <i class="fas fa-check">
+                                            </i>
+                                            Aktif Yap
+                                        </a>
+                                    </td>
+                                }
+
+
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>
+</html>
+<a href="/Heading/AddHeading/" class="btn btn-primary">Yeni Yazar Girişi</a>
+

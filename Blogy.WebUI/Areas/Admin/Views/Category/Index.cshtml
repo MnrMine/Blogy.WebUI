@@ -1,0 +1,45 @@
+﻿@model List<Blogy.EntityLayer.Concrete.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<br />
+<h3>Kategoriler</h3>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th style="width: 50%">Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Başlıklar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.CategoryName</td>
+            <td>
+                <a class="btn btn-danger btn-sm" href="/Category/DeleteCategory/@item.CategoryId">
+                    <i class="fas fa-trash">
+                    </i>
+                    Sil
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-success btn-sm" href="/Category/UpdateCategory/@item.CategoryId">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Güncelle
+                </a>
+            </td>
+            
+        </tr>
+    }
+
+</table>
+<a href="/Category/NewCategory/" class="btn btn-info">Yeni Kategori</a>
+

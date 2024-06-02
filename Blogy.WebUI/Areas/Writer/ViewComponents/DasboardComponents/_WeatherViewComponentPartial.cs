@@ -12,11 +12,11 @@ namespace Blogy.WebUI.Areas.Writer.ViewComponents.DasboardComponents
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://weatherapi-com.p.rapidapi.com/forecast.json?q=%C4%B0stanbul&days=7"),
+                RequestUri = new Uri("https://api.openweathermap.org/data/2.5/weather?q=k%C4%B1r%C4%B1kkale&appid=7"),
                 Headers =
     {
-        { "X-RapidAPI-Key", "446818c186mshe0aae32f305d125p1f4bc6jsn6f0a5bd24c48" },
-        { "X-RapidAPI-Host", "weatherapi-com.p.rapidapi.com" },
+        { "X-RapidAPI-Key", "d1128cd1b69582e97b9ca468b5e7ef05" },
+        { "X-RapidAPI-Host", "api.openweathermap.org" },
     },
             };
             using (var response = await client.SendAsync(request))
@@ -29,3 +29,4 @@ namespace Blogy.WebUI.Areas.Writer.ViewComponents.DasboardComponents
         }
     }
 }
+//https://api.openweathermap.org/data/2.5/weather?q=k%C4%B1r%C4%B1kkale&appid=d1128cd1b69582e97b9ca468b5e7ef05
