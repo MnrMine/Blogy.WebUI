@@ -29,6 +29,19 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
             _writerService.TDelete(id);
             return RedirectToAction("Index");
         }
+        [Route("ChangeToTrue/{id}")]
+        public IActionResult ChangeToTrue(int id)
+        {
+            _writerService.TChangeToTrueByWriter(id);
+            return RedirectToAction("Index");
+        }
+
+        [Route("ChangeToFalse/{id}")]
+        public IActionResult ChangeToFalse(int id)
+        {
+            _writerService.TChangeToFalseByWriter(id);
+            return RedirectToAction("Index");
+        }
 
     }
 }

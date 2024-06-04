@@ -32,7 +32,7 @@ namespace Blogy.WebUI.Areas.Writer.Controllers
 
             //ViewBag.id = user.Id + " " + user.Name + " " + user.Surname;
 
-            var values = _articleService.TGetArticlesByWriter(user.Id);
+            var values = _articleService.TGetArticlesByWriterAndCategory(user.Id);
 
             return View(values);
         }

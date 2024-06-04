@@ -17,6 +17,7 @@ namespace Blogy.DataAccessLayer.Abstract
         List<Article> GetLast4BlogPost();
         Article GetArticleByIdWithWriterIdAndCategory(int id);
         List<Article> GetArticleFilterList(string search);
+        List<Article> GetArticlesByWriterAndCategory(int id);
 
 
 

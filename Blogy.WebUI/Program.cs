@@ -28,6 +28,9 @@ builder.Services.AddScoped<IMessageService, MessageManager>();
 builder.Services.AddScoped<INotificationDal, EfNotificationDal>();
 builder.Services.AddScoped<INotificationService, NotificationManager>();
 
+builder.Services.AddScoped<IWriterDal, EfWriterDal>();
+builder.Services.AddScoped<IWriterService, WriterManager>();
+
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogyContext>().AddErrorDescriber<CustomIdentityValidator>();
 builder.Services.AddControllersWithViews();
 

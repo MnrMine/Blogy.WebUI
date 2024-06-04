@@ -35,6 +35,12 @@ namespace Blogy.DataAccessLayer.EntityFramework
 
 		}
 
+        public List<Article> GetArticlesByWriterAndCategory(int id)
+        {
+            var values = context.Articles.Where(x => x.AppUserId == id).Include(x => x.Category).ToList();
+            return values;
+        }
+
         //public List<Article> GetArticlesByWriterAndCategory(int id)
         //{
         //    var values = context.Articles.Where(x => x.AppUserId == id).Include(x => x.Category).ToList();

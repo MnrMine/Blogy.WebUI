@@ -9,5 +9,7 @@ namespace Blogy.BusinessLayer.Abstract
 {
     public interface IWriterService : IGenericService<Writer>
     {
+        void TChangeToTrueByWriter(int id);
+        void TChangeToFalseByWriter(int id);
     }
 }

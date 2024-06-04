@@ -32,7 +32,7 @@ namespace Blogy.BusinessLayer.Concrete
 
         public List<Article> TGetArticleFilterList(string search)
         {
-            throw new NotImplementedException();
+           return _articleDal.GetArticleFilterList(search);
         }
 
         public List<Article> TGetArticlesByWriter(int id)
@@ -40,7 +40,10 @@ namespace Blogy.BusinessLayer.Concrete
             return _articleDal.GetArticlesByWriter(id);
         }
 
-       
+        public List<Article> TGetArticlesByWriterAndCategory(int id)
+        {
+            return _articleDal.GetArticlesByWriterAndCategory(id);
+        }
 
         public List<Article> TGetArticleWithWriter()
 		{

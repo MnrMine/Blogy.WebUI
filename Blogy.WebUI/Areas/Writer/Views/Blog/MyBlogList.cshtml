@@ -1,7 +1,7 @@
 ﻿@model List<Blogy.EntityLayer.Concrete.Article>
 @{
     ViewData["Title"] = "MyBlogList";
-    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+    Layout = "~/Views/WriterLayout/Index.cshtml";
     int count = 0;
 }
 
@@ -47,7 +47,7 @@
                                             @* <td>@item.ArticleId</td> *@
                                             <td>@item.Title</td>
                                             <td>@item.CreatedDate</td>
-                                            <td>@item.CategoryId</td>
+                                            <td>@item.Category.CategoryName</td>
                                             <td><a href="/Writer/Blog/DeleteBlog/@item.ArticleId" class="btn btn-danger">Sil</a></td>
                                         <td><a href="/Writer/Blog/EditBlog/@item.ArticleId" class="btn btn-success">Güncelle</a></td>
                                         <td><a href="/Writer/Blog/BlogArticleComment/@item.ArticleId" class="btn btn-warning">Yorumlar</a></td>

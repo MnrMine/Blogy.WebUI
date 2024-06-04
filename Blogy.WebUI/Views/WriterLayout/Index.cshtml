@@ -1,0 +1,80 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_LayoutHeadComponentPartial")
+
+<body>
+    <div class="container-scroller">
+
+        @await Component.InvokeAsync("_LayoutSideBarComponentPartial")
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Dashboard/Index">
+                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">@localizer["Dashboard"]</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Blog/MyBlogList">
+                <i class="mdi mdi-database menu-icon"></i>
+                <span class="menu-title">@localizer["Bloglarım"]</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Comment/CommentList">
+                <i class="mdi mdi-comment menu-icon"></i>
+                <span class="menu-title">@localizer["Yorumlarım"]</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Message/MessageList">
+                <i class="mdi mdi-message-text menu-icon"></i>
+                <span class="menu-title">@localizer["Mesajlarım"]</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Statistic/Index">
+                <i class="mdi mdi-chart-areaspline menu-icon"></i>
+                <span class="menu-title">@localizer["İstatistikler"]</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Writer/Chart/Index" ">
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+                <span class="menu-title">@localizer["Grafikler"]</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+                <i class="mdi mdi-logout menu-icon"></i>
+                <span class="menu-title">@localizer["Çıkış Yap"]</span>
+            </a>
+        </li>
+        </ul>
+        </nav>
+
+
+        <div class="container-fluid page-body-wrapper">
+            @await Component.InvokeAsync("_LayoutNavbarComponentPartial")
+
+
+            <div class="main-panel">
+                @RenderBody()
+
+
+            </div>
+        </div>
+    </div>
+    <script src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/js/off-canvas.js"></script>
+    <script src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/js/hoverable-collapse.js"></script>
+    <script src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/js/misc.js"></script>
+</body>
+</html>
+

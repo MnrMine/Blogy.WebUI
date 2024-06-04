@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+    Layout = "~/Views/WriterLayout/Index.cshtml";
 }
 
 <div class="content-wrapper">
@@ -13,6 +13,11 @@
                     <p class="card-description">
                     </p>
                     <div class="table-responsive">
+                        <div class="row">
+
+                            @await Component.InvokeAsync("_WeatherViewComponentPartial")
+
+                        </div>
 <div class="row">
     <div class="col-sm-12 mt-3">
         <h3>İstatistikler</h3>
@@ -126,11 +131,7 @@
 
 
 
-    <div class="row">
-
-   @await Component.InvokeAsync("_WeatherViewComponentPartial") 
-
-      </div>
+    
 
                     </div>
                 </div>
