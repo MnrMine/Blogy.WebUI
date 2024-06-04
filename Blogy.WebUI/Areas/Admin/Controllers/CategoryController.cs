@@ -33,14 +33,14 @@ namespace Blogy.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        [Route("CreateCategory")]
+        [Route("NewCategory")]
         public IActionResult NewCategory()
         {
             return View();
         }
 
         [HttpPost]
-        [Route("CreateCategory")]
+        [Route("NewCategory")]
         public IActionResult NewCategory(Category category)
         {
             _categoryService.TInsert(category);
