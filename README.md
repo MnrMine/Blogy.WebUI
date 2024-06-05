@@ -1,4 +1,4 @@
-![kategoriler](https://github.com/MnrMine/Blogy.WebUI/assets/148393149/4124d68d-f569-44d8-8061-e29f44c661fa)# Blogy Blog Uygulaması
+# Blogy Blog Uygulaması
 Bu proje M&Y Yazlım Akademi ile ilerlettiğim eğitimin üçüncü projesidir.Dinamik Blog yazıp yayınlama ve geliştirme  uygulamasını içermektedir.Kullanılan 3 ayrı Template'yi Component kullanarak Partailview lere ayırarak kod kalabalığından kurtarıp, hataları en aza indirerek kolay kullanım sağlamaktadır.
 # Projeye Genel Bakış
 Proje, ASP.NET Framework, SQL Server, MVC, CSS, ve HTML kullanılarak geliştirilmiş bir Dinamik Blog uygulamasını içermektedir.
